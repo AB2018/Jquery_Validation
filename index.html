@@ -11,17 +11,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="shortcut icon" href="favicon.ico" />
 <title>Vital Partners Leading Dating and Introduction Agency in Sydney &amp; Canberra</title>
-<link href="default.css" rel="stylesheet" type="text/css" media="all">
-<link href="stylesheet.css" rel="stylesheet" type="text/css" media="all">
-<link href="small-resolution.css" rel="stylesheet" type="text/css" media="all">
-<link href="medium-resolution.css" rel="stylesheet" type="text/css" media="all">
-<link href="high-resolution.css" rel="stylesheet" type="text/css" media="all">
+<link href="css/default.css" rel="stylesheet" type="text/css" media="all">
+<link href="css/stylesheet.css" rel="stylesheet" type="text/css" media="all">
+<link href="css/small-resolution.css" rel="stylesheet" type="text/css" media="all">
+<link href="css/medium-resolution.css" rel="stylesheet" type="text/css" media="all">
+<link href="css/high-resolution.css" rel="stylesheet" type="text/css" media="all">
 
 
 
 
 <style>
-     input.error 
+     .error 
         {
             border: solid 1px red;  
             color: Red;    
@@ -125,39 +125,40 @@
 						<div class="phone_fileds">
 							<label>Phone No</label>
 							<input name="phone" type="text" id="phone" > 
-							
+							<div id='phone_erroe'></div>
 						</div>
 						<div class="phone_fileds">
 							<label>Office No</label>
 							<input name="office" type="text" id="office"  > 
-							
+							<div id='office_error'></div>
 						</div>
 					</li>					
 					<li class="fileds">
 						<div class="email_fileds">
 							<label>Email</label>
 							<input name="email" type="text" id="email" > 
-						
+							<div id='email_error'></div>
 						</div>
 						<div class="pass_fileds">
 							<label>Password</label>
 							<input name="password" type="text" id="password" > 
-							
+							<div id='password_error'></div>
 						</div>
 					</li>
 					<li class="fileds">
 						<div class="pass_fileds">
 							<label>Confirm Password</label>
 							<input name="cpassword" type="text" id="cpassword"  /> 
-                      
+							<div id='cpassword_error'></div>
 						</div>
 							<div class="dob_fileds selectbox" >
-								<div class="dob_fileds selectbox">
+								<div class="dob_fileds selectbox" id="date">
 									<label>My birthdate is</label>
 	
 									<ul>
 										<li>
 											<select name="month" id="month" class="select month">
+												<option value="00"></option>
 												<option value="01">Jan</option>
 												<option value="02">Feb</option>
 												<option value="03">March</option>
@@ -174,6 +175,7 @@
 										</li>
 										<li>
 											<select name="day" id="day" class="select day">
+												<option value="please select"></option>
 												<option value="1">01</option>
 												<option value="2">02</option>
 												<option value="3">03</option>
@@ -212,6 +214,7 @@
 	
 										<li>
 											<select name="year" id="year" class="select year" >	
+												<option value="please select"></option>
 													<option value="1940">1940</option>
 													<option value="1941">1941</option>
 													<option value="1942">1942</option>
@@ -299,12 +302,13 @@
 											</select>
 										</li>
 									</ul>	
+									<div id='age_error'></div>
 								</div>
 					</li>
 					<li class="fileds">
 						<div class="age_fileds" >
 							<label>Age</label>
-							<input type="text" name="textbox" id="age_error">	
+							<input type="text" name="textbox" id="age" readonly>	
 						</div>
 						<div class="gender_fileds">
 							<label>Gender</label>
@@ -312,7 +316,7 @@
 								<li><input type="radio" class="radio" id="gender_male" name="radio" required/><label class="radio-label" for="gender_male">Male</label></li>
 								<li><input type="radio" class="radio" id="gender_female" name="radio" required/><label class="radio-label" for="gender_female">Female</label></li>
 							</ul>	
-							
+							<div id='radio_error'></div>
 						</div>
 					</li>
 					<li>
@@ -320,9 +324,10 @@
 						<label>Interest</label>
 							<ul>
 								<li><input type="checkbox" class="checkbox" id="checkbox" name="checkbox" /> <label class="css-label" for="checkbox_sample18">Biking</label></li>
-								<li><input type="checkbox" class="checkbox" id="checkbox" name="checkbox" /> <label class="css-label" for="checkbox_sample19">Reading</label></li>
-								<li><input type="checkbox" class="checkbox" id="checkbox" name="checkbox" /> <label class="css-label" for="checkbox_sample20">Playing</label></li>	
+								<li><input type="checkbox" class="checkbox" id="checkbox1" name="checkbox" /> <label class="css-label" for="checkbox_sample19">Reading</label></li>
+								<li><input type="checkbox" class="checkbox" id="checkbox2" name="checkbox" /> <label class="css-label" for="checkbox_sample20">Playing</label></li>	
 							</ul>
+							<div id='check_error'></div>
 						</div>
 						<div class="about_you_fileds">
 						<label>About you</label>
