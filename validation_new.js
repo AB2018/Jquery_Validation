@@ -1,213 +1,245 @@
 
-	
-	$(document).ready(function(){
-		$(".next_btn").click(function(){
-		$('#firstname').prop('required',true);
-		$('#lastname').prop('required',true);
-		$('#phone').prop('required',true);
-		$('#office').prop('required',true);
-		$('#email').prop('required',true);
-		$('#password').prop('required',true);
-		$('#cpassword').prop('required',true);
-		//var sex = $("input[@name=radio]:checked").val();
-		// if (sex === ""){
-        //     alert("Please enter your sex.");
-        // }
-		if ((!($('#gender_male').prop('checked'))) || (!($('#gender_female').prop('checked')))) {
-			$("#radio_error").html("please select a gender");  
-			console.log(99);
-        }
-        else {
-			$("#radio_error").html("");  
-		}
 
-		if ((!($('#checkbox').prop('checked'))) || (!($('#checkbox1').prop('checked'))) || (!($('#checkbox2').prop('checked')))) {
-			$("#check_error").html("please select a checkbbbbbox");  
-			console.log(99);
-        }
-        else {
-			$("#check_error").html("");  
-		}
+$(document).ready(function () {
+	$(".next_btn").click(function () {
+
 		
-		});
+		checkall();
 
-		$('#phone').keyup(function () {
-			var syntax = /^[0-9]+$/;
-			if((!syntax.test(this.value))){
-                $("#phone_erroe").html("Please enter number only");		
-			}else if(!(this.value.length == 10)){
-				$("#phone_erroe").html("Please enter 10 digit only");
-			}
-			else{
-				$("#phone_erroe").html("");	
-			} 
-		 });
+		var gender = $("input[name='radio']:checked").val();
+		if (gender) {
+			$("#radio_error").html("");
 
-		 $('#office').keyup(function () {
-			var syntax = /^[0-9]+$/;
-			if((!syntax.test(this.value))){
-				$("#office_error").html("Please enter number only");		
-			}else if(!(this.value.length == 10)){
-				$("#office_error").html("Please enter 10 digit only");
-			}
-			else{
-				$("#office_error").html("");	
-			} 
-		 });
+		}
+		else {
+			$("#radio_error").html("please select gender");
 
-		 $('#email').keyup(function () {
-			
-			var syntax = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-			if((!syntax.test(this.value))){
-				$("#email_error").html("Invalid Format");		
-			}
-			else{
-				$("#email_error").html("");	
-			} 
-		 });
+		}
+		var checkbox = $("input[name='checkbox']:checked").val();
+		if (checkbox) {
+			$("#check_error").html("");
 
-		 $('#password').keyup(function () {
-			
-			var syntax = /^[a-zA-Z0-9]*$/;
-			if((!syntax.test(this.value))){
-				$("#password_error").html("Invalid Format");		
-			}else if(this.value.length < 8 || this.value.length >16){
-				$("#password_error").html("Password should be 8-16 digit");
-			}
-			else{
-				$("#password_error").html("");	
-			} 
-		 });
-         
-		 $('#cpassword').keyup(function () {
-			
-			var syntax = /^[a-zA-Z0-9]*$/;
-			if((!syntax.test(this.value))){
-				$("#cpassword_error").html("Invalid Format");		
-			}else if(this.value.length < 8 || this.value.length >16){
-				$("#cpassword_error").html("Password should be 8-16 digit");
-			}
-			else{
-				$("#cpassword_error").html("");	
-			} 
-		 });
+		}
+		else {
+			$("#check_error").html("please select one interest");
+
+		}
+     
+
+	});
+
+	function checkall() {
+
+		if ($('#firstname').val() == '') {
+
+			$("#firstname_error").html("Required Field");
+
+		}
+		if ($('#lastname').val() == '') {
+
+			$("#lastname_error").html("Required Field");
+
+		}
+		if ($('#phone').val() == '') {
+
+			$("#phone_error").html("Required Field");
+
+		}
+		if ($('#office').val() == '') {
+
+			$("#office_error").html("Required Field");
+
+		}
+		if ($('#email').val() == '') {
+
+			$("#email_error").html("Required Field");
+
+		}
+		if ($('#password').val() == '') {
+
+			$("#password_error").html("Required Field");
+
+		}
+		if ($('#cpassword').val() == '') {
+
+			$("#cpassword_error").html("Required Field");
+
+		}
+		if ($('#about').val() == '') {
+
+			$("#about_error").html("Required Field");
+
+		}
+	}
+
+	$('#firstname').blur(function () {
+
+		var syntax = /^[0-9]+$/;
+		var inputValue = $('#firstname').val();
+
+		if (inputValue.length == '') {
+
+			$("#firstname_error").html("Required Field");
+
+		}
+		else if (syntax.test(inputValue)) {
+			$("#firstname_error").html("Number not allowed");
+
+		}
+		else {
+			$("#firstname_error").html("");
+		}
+	});
 
 
-		 $('#date').click(function () {
-			
-		 var date = $('#day').val();
-		 var month = $('#month').val();
-		 var year = $('#year').val();
+	$('#lastname').blur(function () {
 
-		 const birth = new Date(year, month - 1, date);
-         const now = new Date();
-		 if(birth<now){
+		var syntax = /^[0-9]+$/;
+		var inputValue = $('#lastname').val();
+
+		if (inputValue.length == '') {
+
+			$("#lastname_error").html("Required Field");
+
+		}
+		else if (syntax.test(inputValue)) {
+			$("#lastname_error").html("Number not allowed");
+
+		}
+		else {
+			$("#lastname_error").html("");
+		}
+	});
+	$('#phone').blur(function () {
+
+		var syntax = /^[a-zA-Z]+$/;
+		var inputValue = $('#phone').val();
+
+		if (inputValue.length == '') {
+
+			$("#phone_error").html("Required Field");
+
+		}
+		else if (syntax.test(inputValue)) {
+			$("#phone_error").html("Only Nymber aallowed");
+
+		}
+		else {
+			$("#phone_error").html("");
+		}
+	});
+	$('#office').blur(function () {
+
+		var syntax = /^[a-zA-Z]+$/;
+		var inputValue = $('#office').val();
+
+		if (inputValue.length == '') {
+
+			$("#office_error").html("Required Field");
+		}
+		else if (syntax.test(inputValue)) {
+			$("#office_error").html("Only Nymber aallowed");
+		}
+		else {
+			$("#office_error").html("");
+		}
+	});
+
+	$('#email').blur(function () {
+
+		var syntax = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+		var inputValue = $('#email').val();
+
+		if (inputValue.length == '') {
+
+			$("#email_error").html("Required Field");
+
+		} else if ((!syntax.test(inputValue))) {
+			$("#email_error").html("Invalid Format");
+		}
+		else {
+			$("#email_error").html("");
+		}
+	});
+
+	$('#password').blur(function () {
+
+		var syntax = /^[a-zA-Z0-9]*$/;
+		var inputValue = $('#password').val();
+
+		if (inputValue.length == '') {
+
+			$("#password_error").html("Required Field");
+
+		} else if ((!syntax.test(inputValue))) {
+			$("#password_error").html("Special character not allowed");
+		} else if (this.value.length < 8 || this.value.length > 16) {
+			$("#password_error").html("Password should be 8-16 digit");
+		}
+		else {
+			$("#password_error").html("");
+		}
+	});
+
+
+	$('#cpassword').blur(function () {
+
+		var syntax = /^[a-zA-Z0-9]*$/;
+		var inputValue = $('#cpassword').val();
+
+		if (inputValue.length == '') {
+
+			$("#cpassword_error").html("Required Field");
+
+		} else if ((!syntax.test(inputValue))) {
+			$("#cpassword_error").html("Special character not allowed");
+		} else if (this.value.length < 8 || this.value.length > 16) {
+			$("#cpassword_error").html("Password should be 8-16 digit");
+		} else if (!($("#password").val() == (this.value))) {
+			$("#cpassword_error").html("Password not matched");
+		}
+		else {
+			$("#cpassword_error").html("");
+		}
+	});
+
+	$('#about').blur(function () {
+
+		var syntax = /^[a-zA-Z0-9]*$/;
+		var inputValue = $('#about').val();
+
+		if (inputValue.length == '') {
+
+			$("#about_error").html("Required Field");
+
+		} else if ((!syntax.test(inputValue))) {
+			$("#about_error").html("Special character not allowed");
+		} 
+		else {
+			$("#about_error").html("");
+		}
+	});
+
+	$(".radio").change(function () {
+		$("#radio_error").hide();
+	});
+	$(".checkbox").change(function () {
+		$("#check_error").hide();
+	});
+
+	$('#date').click(function () {
+
+		var date = $('#day').val();
+		var month = $('#month').val();
+		var year = $('#year').val();
+
+		const birth = new Date(year, month - 1, date);
+		const now = new Date();
+		if (birth < now) {
 			const diff = new Date(now.valueOf() - birth.valueOf());
-			$('#age').val((Math.abs(diff.getFullYear() - 1970))+' years old');
-		 }
-		 
-		 });
+			$('#age').val((Math.abs(diff.getFullYear() - 1970)) + ' years old');
+		}
 
-		//  var x = $("#radio").val();  
-		//  console.log(x)
-        //      if(x.length>0)  
-        //      {  
-        //         $("#radio_error").text("please select a course");  
-                   
-        //      }  
-        //      else {  
-        //             $("#radio_error").text("");  
-                     
-        //      }  
-        // if ((!($('#gender_male').prop('checked'))) || (!($('#gender_female').prop('checked')))) {
-		// 	$("#radio_error").html("please select a course");  
-		// 	console.log(99);
-        // }
-        // else {
-		// 	$("#radio_error").html("");  
-		// }
-        
+	});
 
-	  });	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// jQuery('#frm').validate({
-// 	rules:{
-// 		firstname:"required",
-//     lastname:"required",
-//     office:"required",
-// 		email:{
-// 			required:true,
-// 			email:true
-// 		},
-// 		password:{
-// 			required:true,
-// 			minlength:5
-// 		},
-//     cpassword:{
-// 			required:true,
-// 			minlength:5,
-//       equalTo: "#password",
-// 		},
-//     phone:{
-//       required:true,
-// 			number:true,
-//       minlength:10,
-//       maxlength:10,
-// 		},
-//     office:{
-//       required:true,
-// 			number:true,
-//       minlength:10,
-//       maxlength:10,
-// 		}
-  
-// 	},messages:{
-// 		firstname:"Please enter your name",
-// 		email:{
-// 			required:"Please enter email",
-// 			email:"Please enter valid email",
-// 		},
-// 		password:{
-// 			required:"Please enter your password",
-// 			minlength:"Password must be 8 char long"
-// 		},
-//     cpassword:{
-// 			required:"Please enter your password",
-// 			minlength:"Password must be 8 char long",     
-// 		},
-//     phone:{
-// 			required:"Please enter your Phone number",
-      
-// 		},
-// 	},
-  
-// 	submitHandler:function(form){
-// 		form.submit();
-// 	}
-// });
-
+});
